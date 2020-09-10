@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BugTracker12345ModelStoreContainer" CdmEntityContainer="BugTracker12345">
+    <EntitySetMapping Name="Asignaciones">
+      <EntityTypeMapping TypeName="BugTracker12345Model.Asignaciones">
+        <MappingFragment StoreEntitySet="Asignaciones">
+          <ScalarProperty Name="id_asignacion" ColumnName="id_asignacion" />
+          <ScalarProperty Name="n_asignacion" ColumnName="n_asignacion" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AsistenciaUsuarios">
+      <EntityTypeMapping TypeName="BugTracker12345Model.AsistenciaUsuarios">
+        <MappingFragment StoreEntitySet="AsistenciaUsuarios">
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="hora_ingreso" ColumnName="hora_ingreso" />
+          <ScalarProperty Name="hora_salida" ColumnName="hora_salida" />
+          <ScalarProperty Name="id_estado_asistencia" ColumnName="id_estado_asistencia" />
+          <ScalarProperty Name="comentario" ColumnName="comentario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Descuentos">
+      <EntityTypeMapping TypeName="BugTracker12345Model.Descuentos">
+        <MappingFragment StoreEntitySet="Descuentos">
+          <ScalarProperty Name="id_descuento" ColumnName="id_descuento" />
+          <ScalarProperty Name="n_descuento" ColumnName="n_descuento" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstadosAsistencia">
+      <EntityTypeMapping TypeName="BugTracker12345Model.EstadosAsistencia">
+        <MappingFragment StoreEntitySet="EstadosAsistencia">
+          <ScalarProperty Name="id_estado_asistencia" ColumnName="id_estado_asistencia" />
+          <ScalarProperty Name="n_estados_asistencia" ColumnName="n_estados_asistencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Perfiles">
+      <EntityTypeMapping TypeName="BugTracker12345Model.Perfiles">
+        <MappingFragment StoreEntitySet="Perfiles">
+          <ScalarProperty Name="id_perfil" ColumnName="id_perfil" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SueldoAsignaciones">
+      <EntityTypeMapping TypeName="BugTracker12345Model.SueldoAsignaciones">
+        <MappingFragment StoreEntitySet="SueldoAsignaciones">
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="id_asignacion" ColumnName="id_asignacion" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SueldoDescuentos">
+      <EntityTypeMapping TypeName="BugTracker12345Model.SueldoDescuentos">
+        <MappingFragment StoreEntitySet="SueldoDescuentos">
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="id_descuento" ColumnName="id_descuento" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SueldoPerfilHistorico">
+      <EntityTypeMapping TypeName="BugTracker12345Model.SueldoPerfilHistorico">
+        <MappingFragment StoreEntitySet="SueldoPerfilHistorico">
+          <ScalarProperty Name="id_perfil" ColumnName="id_perfil" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="sueldo" ColumnName="sueldo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sueldos">
+      <EntityTypeMapping TypeName="BugTracker12345Model.Sueldos">
+        <MappingFragment StoreEntitySet="Sueldos">
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="sueldo_bruto" ColumnName="sueldo_bruto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="BugTracker12345Model.Usuarios">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="id_perfil" ColumnName="id_perfil" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

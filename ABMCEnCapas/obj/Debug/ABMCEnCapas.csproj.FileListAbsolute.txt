@@ -1,0 +1,13 @@
+C:\Users\Sergi\OneDrive\Escritorio\TP-PAV1\liquidacionSueldos\ABMCEnCapas\bin\Debug\ABMCEnCapas.exe.config
+C:\Users\Sergi\OneDrive\Escritorio\TP-PAV1\liquidacionSueldos\ABMCEnCapas\bin\Debug\ABMCEnCapas.exe
+C:\Users\Sergi\OneDrive\Escritorio\TP-PAV1\liquidacionSueldos\ABMCEnCapas\bin\Debug\ABMCEnCapas.pdb
+C:\Users\Sergi\OneDrive\Escritorio\TP-PAV1\liquidacionSueldos\ABMCEnCapas\obj\Debug\ABMCEnCapas.csprojAssemblyReference.cache
+C:\Users\Sergi\OneDrive\Escritorio\TP-PAV1\liquidacionSueldos\ABMCEnCapas\obj\Debug\ABMCEnCapas.Properties.Resources.resources
+C:\Users\Sergi\OneDrive\Escritorio\TP-PAV1\liquidacionSueldos\ABMCEnCapas\obj\Debug\ABMCEnCapas.csproj.GenerateResource.cache
+C:\Users\Sergi\OneDrive\Escritorio\TP-PAV1\liquidacionSueldos\ABMCEnCapas\obj\Debug\ABMCEnCapas.csproj.CoreCompileInputs.cache
+C:\Users\Sergi\OneDrive\Escritorio\TP-PAV1\liquidacionSueldos\ABMCEnCapas\obj\Debug\ABMCEnCapas.exe
+C:\Users\Sergi\OneDrive\Escritorio\TP-PAV1\liquidacionSueldos\ABMCEnCapas\obj\Debug\ABMCEnCapas.pdb
+C:\Users\Sergi\OneDrive\Escritorio\TP-PAV1\liquidacionSueldos\ABMCEnCapas\obj\Debug\ABMCEnCapas.login.resources
+C:\Users\Sergi\OneDrive\Escritorio\TP-PAV1\liquidacionSueldos\ABMCEnCapas\bin\Debug\EntityFramework.dll
+C:\Users\Sergi\OneDrive\Escritorio\TP-PAV1\liquidacionSueldos\ABMCEnCapas\bin\Debug\EntityFramework.xml
+C:\Users\Sergi\OneDrive\Escritorio\TP-PAV1\liquidacionSueldos\ABMCEnCapas\obj\Debug\ABMCEnCapas.csproj.CopyComplete

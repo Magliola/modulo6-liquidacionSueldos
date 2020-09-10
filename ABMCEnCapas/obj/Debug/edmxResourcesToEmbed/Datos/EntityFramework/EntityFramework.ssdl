@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BugTracker12345Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Asignaciones">
+    <Key>
+      <PropertyRef Name="id_asignacion" />
+    </Key>
+    <Property Name="id_asignacion" Type="int" Nullable="false" />
+    <Property Name="n_asignacion" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="monto" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AsistenciaUsuarios">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+      <PropertyRef Name="fecha" />
+    </Key>
+    <Property Name="id_usuario" Type="int" Nullable="false" />
+    <Property Name="fecha" Type="date" Nullable="false" />
+    <Property Name="hora_ingreso" Type="time" Precision="7" />
+    <Property Name="hora_salida" Type="time" Precision="7" />
+    <Property Name="id_estado_asistencia" Type="int" />
+    <Property Name="comentario" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Descuentos">
+    <Key>
+      <PropertyRef Name="id_descuento" />
+    </Key>
+    <Property Name="id_descuento" Type="int" Nullable="false" />
+    <Property Name="n_descuento" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="monto" Type="numeric" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="EstadosAsistencia">
+    <Key>
+      <PropertyRef Name="id_estado_asistencia" />
+    </Key>
+    <Property Name="id_estado_asistencia" Type="int" Nullable="false" />
+    <Property Name="n_estados_asistencia" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Perfiles">
+    <Key>
+      <PropertyRef Name="id_perfil" />
+    </Key>
+    <Property Name="id_perfil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SueldoAsignaciones">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+      <PropertyRef Name="fecha" />
+      <PropertyRef Name="id_asignacion" />
+    </Key>
+    <Property Name="id_usuario" Type="int" Nullable="false" />
+    <Property Name="fecha" Type="date" Nullable="false" />
+    <Property Name="id_asignacion" Type="int" Nullable="false" />
+    <Property Name="monto" Type="numeric" Precision="10" Scale="2" />
+    <Property Name="cantidad" Type="int" />
+  </EntityType>
+  <EntityType Name="SueldoDescuentos">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+      <PropertyRef Name="fecha" />
+      <PropertyRef Name="id_descuento" />
+    </Key>
+    <Property Name="id_usuario" Type="int" Nullable="false" />
+    <Property Name="fecha" Type="date" Nullable="false" />
+    <Property Name="id_descuento" Type="int" Nullable="false" />
+    <Property Name="cantidad" Type="int" />
+    <Property Name="monto" Type="numeric" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="SueldoPerfilHistorico">
+    <Key>
+      <PropertyRef Name="id_perfil" />
+      <PropertyRef Name="fecha" />
+    </Key>
+    <Property Name="id_perfil" Type="int" Nullable="false" />
+    <Property Name="fecha" Type="date" Nullable="false" />
+    <Property Name="sueldo" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sueldos">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+      <PropertyRef Name="fecha" />
+    </Key>
+    <Property Name="id_usuario" Type="int" Nullable="false" />
+    <Property Name="fecha" Type="date" Nullable="false" />
+    <Property Name="sueldo_bruto" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+    </Key>
+    <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_perfil" Type="int" Nullable="false" />
+    <Property Name="usuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="estado" Type="varchar" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_id_estado_asistencia">
+    <End Role="EstadosAsistencia" Type="Self.EstadosAsistencia" Multiplicity="0..1" />
+    <End Role="AsistenciaUsuarios" Type="Self.AsistenciaUsuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstadosAsistencia">
+        <PropertyRef Name="id_estado_asistencia" />
+      </Principal>
+      <Dependent Role="AsistenciaUsuarios">
+        <PropertyRef Name="id_estado_asistencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_seldoAsig_asignacion">
+    <End Role="Asignaciones" Type="Self.Asignaciones" Multiplicity="1" />
+    <End Role="SueldoAsignaciones" Type="Self.SueldoAsignaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asignaciones">
+        <PropertyRef Name="id_asignacion" />
+      </Principal>
+      <Dependent Role="SueldoAsignaciones">
+        <PropertyRef Name="id_asignacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_seldoDesc_descuento">
+    <End Role="Descuentos" Type="Self.Descuentos" Multiplicity="1" />
+    <End Role="SueldoDescuentos" Type="Self.SueldoDescuentos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Descuentos">
+        <PropertyRef Name="id_descuento" />
+      </Principal>
+      <Dependent Role="SueldoDescuentos">
+        <PropertyRef Name="id_descuento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_sueldo_asig">
+    <End Role="Sueldos" Type="Self.Sueldos" Multiplicity="1" />
+    <End Role="SueldoAsignaciones" Type="Self.SueldoAsignaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sueldos">
+        <PropertyRef Name="id_usuario" />
+        <PropertyRef Name="fecha" />
+      </Principal>
+      <Dependent Role="SueldoAsignaciones">
+        <PropertyRef Name="id_usuario" />
+        <PropertyRef Name="fecha" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_sueldo_desc">
+    <End Role="Sueldos" Type="Self.Sueldos" Multiplicity="1" />
+    <End Role="SueldoDescuentos" Type="Self.SueldoDescuentos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sueldos">
+        <PropertyRef Name="id_usuario" />
+        <PropertyRef Name="fecha" />
+      </Principal>
+      <Dependent Role="SueldoDescuentos">
+        <PropertyRef Name="id_usuario" />
+        <PropertyRef Name="fecha" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_sueldo_usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Sueldos" Type="Self.Sueldos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="Sueldos">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_sueldoPerfil_permfiles">
+    <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
+    <End Role="SueldoPerfilHistorico" Type="Self.SueldoPerfilHistorico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perfiles">
+        <PropertyRef Name="id_perfil" />
+      </Principal>
+      <Dependent Role="SueldoPerfilHistorico">
+        <PropertyRef Name="id_perfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios_Perfiles">
+    <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perfiles">
+        <PropertyRef Name="id_perfil" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="id_perfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BugTracker12345ModelStoreContainer">
+    <EntitySet Name="Asignaciones" EntityType="Self.Asignaciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AsistenciaUsuarios" EntityType="Self.AsistenciaUsuarios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Descuentos" EntityType="Self.Descuentos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstadosAsistencia" EntityType="Self.EstadosAsistencia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Perfiles" EntityType="Self.Perfiles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SueldoAsignaciones" EntityType="Self.SueldoAsignaciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SueldoDescuentos" EntityType="Self.SueldoDescuentos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SueldoPerfilHistorico" EntityType="Self.SueldoPerfilHistorico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sueldos" EntityType="Self.Sueldos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_id_estado_asistencia" Association="Self.fk_id_estado_asistencia">
+      <End Role="EstadosAsistencia" EntitySet="EstadosAsistencia" />
+      <End Role="AsistenciaUsuarios" EntitySet="AsistenciaUsuarios" />
+    </AssociationSet>
+    <AssociationSet Name="fk_seldoAsig_asignacion" Association="Self.fk_seldoAsig_asignacion">
+      <End Role="Asignaciones" EntitySet="Asignaciones" />
+      <End Role="SueldoAsignaciones" EntitySet="SueldoAsignaciones" />
+    </AssociationSet>
+    <AssociationSet Name="fk_seldoDesc_descuento" Association="Self.fk_seldoDesc_descuento">
+      <End Role="Descuentos" EntitySet="Descuentos" />
+      <End Role="SueldoDescuentos" EntitySet="SueldoDescuentos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_sueldo_asig" Association="Self.fk_sueldo_asig">
+      <End Role="Sueldos" EntitySet="Sueldos" />
+      <End Role="SueldoAsignaciones" EntitySet="SueldoAsignaciones" />
+    </AssociationSet>
+    <AssociationSet Name="fk_sueldo_desc" Association="Self.fk_sueldo_desc">
+      <End Role="Sueldos" EntitySet="Sueldos" />
+      <End Role="SueldoDescuentos" EntitySet="SueldoDescuentos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_sueldo_usuarios" Association="Self.fk_sueldo_usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Sueldos" EntitySet="Sueldos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_sueldoPerfil_permfiles" Association="Self.fk_sueldoPerfil_permfiles">
+      <End Role="Perfiles" EntitySet="Perfiles" />
+      <End Role="SueldoPerfilHistorico" EntitySet="SueldoPerfilHistorico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_Perfiles" Association="Self.FK_Usuarios_Perfiles">
+      <End Role="Perfiles" EntitySet="Perfiles" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
